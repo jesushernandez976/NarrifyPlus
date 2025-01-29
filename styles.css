@@ -1,0 +1,198 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+    background: linear-gradient(to right,rgb(184, 193, 171),rgb(51, 142, 113));
+    background-size: 200% 100%; /* Double the width of the background to enable movement */
+    animation: gradientMove 5s linear infinite;
+    font-weight: 400;
+}
+
+@keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  video {
+    display: flex;
+    top: 0;
+    height: 250px;
+    width: auto;
+    mix-blend-mode: darken;
+    transition: transform 0.3s ease; /* Move the transition here to apply to both normal and hover states */
+  }
+  
+  video:hover {
+    transform: scale(1.13); /* Example: Scale the video by 10% when hovered */
+  }
+
+  .buttons {
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+  }
+
+  #speak-btn, #pause-btn, #rest-btn {
+  appearance: none;
+  border-radius: 30em;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 7px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -.24px;
+  margin: 0;
+  outline: none;
+  padding: .5rem 1rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  }
+
+  #speak-btn:hover, #pause-btn:hover, #rest-btn:hover {
+    background-color: #FFC229;
+    box-shadow: #FF6314 0 -6px 8px inset;
+    transform: scale(1.05);
+  }
+  
+  #speak-btn:active, #pause-btn:active, #rest-btn:active {
+    transform: scale(1.025);
+  }
+  
+
+  .tag {
+    display: flex;
+    bottom: 10px; /* Keeps the element 10px from the bottom */
+    left: 50%; /* Centers horizontally based on the viewport */
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-size: 9px;
+    text-align: center;
+}
+
+
+
+  #file-input {
+    margin: 10px;
+    z-index:2;
+    padding: 7px;
+    background: rgba(234, 234, 234, 0.2);
+    box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
+    border-radius: 30px;
+    font-size: 14px;
+    color: #333;
+    width: 75%;
+    transition: all .15s;
+    user-select: none;
+   -webkit-user-select: none;
+    touch-action: manipulation;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  #file-input:hover,#voice-select:hover {
+    background-color:rgb(255, 255, 255);
+    box-shadow: #ADCFFF 0 -12px 7px inset;
+    transform: scale(1.03);
+  }
+
+
+  #text-output {
+    margin: 10px;
+    padding: 20px;
+    max-width: 1000px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 75%;
+    border-radius: 30px;
+    background: rgba(234, 234, 234, 0.2);
+    box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
+  }
+  #progress {
+    margin: 10px;
+    font-size: 14px;
+  }
+  #voice-select {
+    margin: 10px;
+    z-index:2;
+    padding: 7px;
+    background: rgba(234, 234, 234, 0.2);
+    box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
+    border-radius: 30px;
+    font-size: 14px;
+    color: #333;
+    width: 75%;
+    transition: all .15s;
+    user-select: none;
+   -webkit-user-select: none;
+    touch-action: manipulation;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+  }
+
+
+  @media screen and (max-width: 480px) {
+    body {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+
+    .container {
+        padding: 5px; /* Add smaller padding */
+    }
+
+    video {
+        height: auto;
+        max-height: 175px; /* Limit video height for smaller screens */
+    }
+
+    .buttons {
+        flex-direction: row; /* Stack buttons vertically */
+        gap: 20px; /* Reduce gap between buttons */
+    }
+
+    .tag {
+        font-size: 8px; /* Smaller font size for tags */
+        bottom: 5px; /* Adjust position for smaller screens */
+    }
+
+    #file-input,
+    #text-output,
+    #voice-select {
+        width: 85%; /* Ensure full width */
+        font-size: 12px; /* Adjust font size */
+    }
+
+    #text-output {
+        max-height: 100px; /* Reduce max height for smaller screens */
+    }
+
+    #speak-btn, #pause-btn, #rest-btn {
+        font-size: .90rem;
+        padding: .25rem 1rem;
+      }
+}
