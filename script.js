@@ -8,6 +8,12 @@ document.getElementById('file-input').addEventListener('change', handleFileUploa
 
 function loadVoices() {
     voices = speechSynthesis.getVoices();
+
+    if (voices.length === 0) {
+        setTimeout(loadVoices, 500); // Retry if voices are not available
+        return;
+    }
+
     const voiceSelect = document.getElementById('voice-select');
     if (voiceSelect) {
         voiceSelect.innerHTML = ''; 
@@ -122,6 +128,11 @@ function displayText(text) {
 document.getElementById('speak-btn').addEventListener('click', function () {
     const selectedVoice = document.getElementById('voice-select')?.selectedOptions[0]?.getAttribute('data-name');
     const voice = voices.find(v => v.name === selectedVoice);
+
+    if (!voice) {
+        alert('No voice selected or available. Please choose a voice.');
+        return;
+    }
 
     if (isPaused) {
         speechSynthesis.resume();
