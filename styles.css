@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(to right,rgb(224, 228, 218),rgb(33, 119, 92));
+    background: linear-gradient(to right,rgb(224, 228, 218),rgb(18, 78, 59));
     background-size: 200% 100%; /* Double the width of the background to enable movement */
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
@@ -194,6 +194,8 @@ body {
     opacity: 0.5;         /* Makes it look inactive */
     cursor: default;      /* Changes cursor to default */
 }
+
+
 
 
   @media screen and (max-width: 480px) {
