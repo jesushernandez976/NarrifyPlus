@@ -182,6 +182,11 @@ body {
     align-items: center;
   }
 
+  .alert {
+    width: 80%;
+    font-size: 12px;
+  }
+
 
   @media screen and (max-width: 480px) {
     body {
@@ -248,5 +253,9 @@ body {
       .pause {
         height: 20px;
         align-items: center;
+      }
+      .alert {
+        width: 80%;
+        font-size: 10px;
       }
 }
