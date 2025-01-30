@@ -80,6 +80,7 @@ body {
   
   #speak-btn:active, #pause-btn:active, #rest-btn:active {
     transform: scale(1.025);
+    background-color:rgb(255, 255, 255);
   }
   
 
@@ -185,7 +186,14 @@ body {
   .alert {
     width: 80%;
     font-size: 12px;
+    opacity: .90;
   }
+
+  .disabled-button {
+    pointer-events: none;  /* Prevents clicking and hovering */
+    opacity: 0.5;         /* Makes it look inactive */
+    cursor: default;      /* Changes cursor to default */
+}
 
 
   @media screen and (max-width: 480px) {

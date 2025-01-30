@@ -6,12 +6,11 @@ let voices = [];
 
 document.getElementById('file-input').addEventListener('change', handleFileUpload);
 
-// Initialize voices
 function loadVoices() {
     voices = speechSynthesis.getVoices();
     const voiceSelect = document.getElementById('voice-select');
     if (voiceSelect) {
-        voiceSelect.innerHTML = ''; // Clear previous options
+        voiceSelect.innerHTML = ''; 
         voices = voices.filter(voice => voice.name.includes('Microsoft'));
 
         voices.forEach(voice => {
@@ -27,7 +26,6 @@ function loadVoices() {
 window.speechSynthesis.onvoiceschanged = loadVoices;
 loadVoices();
 
-// Handle file upload
 function handleFileUpload(event) {
     const file = event.target.files[0];
     if (file) {
@@ -41,21 +39,18 @@ function handleFileUpload(event) {
     }
 }
 
-// Function to show the alert
 function showAlert() {
     var alert = document.getElementById('alert');
     if (alert) {
-        alert.style.display = 'block'; // Make it visible
-        alert.classList.add('show'); // Add Bootstrap show class
+        alert.style.display = 'block'; 
+        alert.classList.add('show');
 
-        // Ensure alert closes when "X" is clicked
         alert.querySelector('.btn-close').addEventListener('click', function () {
             alert.style.display = 'none';
         });
     }
 }
 
-// Extract text from PDF
 function extractTextFromPDF(file) {
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -85,7 +80,6 @@ function extractTextFromPDF(file) {
     reader.readAsArrayBuffer(file);
 }
 
-// Extract text from Image (using Tesseract.js)
 function extractTextFromImage(file) {
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -117,16 +111,14 @@ function extractTextFromImage(file) {
     reader.readAsDataURL(file);
 }
 
-// Display extracted text
 function displayText(text) {
     document.getElementById('text-output').textContent = text;
-    document.getElementById('speak-btn').disabled = false;
-    document.getElementById('pause-btn').disabled = false;
-    document.getElementById('rest-btn').disabled = false;
+    enableButton('speak-btn');
+    disableButton('pause-btn');
+    enableButton('rest-btn');
     document.getElementById('progress').textContent = '';
 }
 
-// Read extracted text aloud
 document.getElementById('speak-btn').addEventListener('click', function () {
     const selectedVoice = document.getElementById('voice-select')?.selectedOptions[0]?.getAttribute('data-name');
     const voice = voices.find(v => v.name === selectedVoice);
@@ -145,20 +137,38 @@ document.getElementById('speak-btn').addEventListener('click', function () {
 
         utterance.onend = function () {
             currentPosition = 0;
+            enableButton('speak-btn');
+            disableButton('pause-btn');
         };
 
         speechSynthesis.speak(utterance);
     }
+
+    disableButton('speak-btn');
+    enableButton('pause-btn');
 });
 
-// Pause reading
 document.getElementById('pause-btn').addEventListener('click', function () {
     speechSynthesis.pause();
     isPaused = true;
+
+    disableButton('pause-btn');
+    enableButton('speak-btn');
 });
 
-// Reset functionality (stop voice and reload page)
 document.getElementById('rest-btn').addEventListener('click', function () {
     speechSynthesis.cancel();
     setTimeout(() => location.reload(), 200);
 });
+
+function disableButton(buttonId) {
+    const button = document.getElementById(buttonId);
+    button.disabled = true;
+    button.classList.add('disabled-button'); // Add class to remove hover
+}
+
+function enableButton(buttonId) {
+    const button = document.getElementById(buttonId);
+    button.disabled = false;
+    button.classList.remove('disabled-button'); // Remove class when enabled
+}
