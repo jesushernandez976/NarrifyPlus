@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(to right,rgb(184, 193, 171),rgb(51, 142, 113));
+    background: linear-gradient(to right,rgb(224, 228, 218),rgb(33, 119, 92));
     background-size: 200% 100%; /* Double the width of the background to enable movement */
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
@@ -158,8 +158,28 @@ body {
   .coverLetter {
     display: inline-block;
     padding: 2px 30px;
+    margin-bottom: 10px;
     width: 85%;
 
+  }
+
+  .coverLetter > h1 {
+    font-weight: 900;
+  }
+
+  .stop {
+    height: 30px;
+    align-items: center;
+  }
+
+  .play {
+    height: 30px;
+    align-items: center;
+  }
+
+  .pause {
+    height: 30px;
+    align-items: center;
   }
 
 
@@ -214,4 +234,19 @@ body {
     .coverLetter {
         width: 100%;
     }
+
+    .stop {
+        height: 20px;
+        align-items: center;
+      }
+    
+      .play {
+        height: 20px;
+        align-items: center;
+      }
+    
+      .pause {
+        height: 20px;
+        align-items: center;
+      }
 }
