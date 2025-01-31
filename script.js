@@ -35,6 +35,10 @@ function handleFileUpload(event) {
             extractTextFromPDF(file);
         } else if (file.type.startsWith('image/')) {
             extractTextFromImage(file);
+        } else if (file.type === 'video/hvec') {  // Adjust this based on the actual .hvec file MIME type
+            extractTextFromHVEC(file);
+        } else {
+            displayText('Unsupported file format.');
         }
     }
 }
@@ -109,6 +113,21 @@ function extractTextFromImage(file) {
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
+}
+
+function extractTextFromHVEC(file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        // Placeholder for the actual OCR or file processing for .hvec files
+        processHVECFile(e.target.result); // Call a function to handle .hvec files
+    };
+    reader.readAsArrayBuffer(file);
+}
+
+function processHVECFile(data) {
+    // Example: Integrate an OCR method or processing logic for .hvec files
+    // Replace this with actual OCR or parsing functionality for .hvec files
+    displayText('OCR for .hvec files not implemented.'); // Placeholder message
 }
 
 function displayText(text) {
