@@ -34,11 +34,11 @@ function handleFileUpload(event) {
         if (file.type === 'application/pdf') {
             extractTextFromPDF(file);
         } else if (file.type.startsWith('image/')) {
-            extractTextFromImage(file);
-        } else if (file.type === 'video/hvec') {  // Adjust this based on the actual .hvec file MIME type
-            extractTextFromHVEC(file);
-        } else {
-            displayText('Unsupported file format.');
+            if (file.name.toLowerCase().endsWith('.heic')) {
+                convertHEICToImage(file);
+            } else {
+                extractTextFromImage(file);
+            }
         }
     }
 }
@@ -53,6 +53,48 @@ function showAlert() {
             alert.style.display = 'none';
         });
     }
+}
+
+function convertHEICToImage(file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const heicData = e.target.result;
+
+        // Using the heic2any library to convert HEIC to a browser-supported image format
+        heic2any({
+            blob: new Blob([heicData], { type: 'image/heic' }),
+            toType: 'image/jpeg',  // You can also convert to 'image/png'
+        }).then((convertedBlob) => {
+            const img = new Image();
+            img.onload = function () {
+                document.getElementById('progress').textContent = 'Starting OCR...';
+
+                // Use Tesseract OCR to process the converted image
+                Tesseract.recognize(img, 'eng', {
+                    logger: (m) => {
+                        if (m.status === 'recognizing text') {
+                            document.getElementById('progress').textContent = `Processing: ${Math.round(m.progress * 100)}%`;
+                        }
+                    }
+                }).then(({ data: { text } }) => {
+                    currentText = text;
+                    displayText(text);
+                }).catch((err) => {
+                    console.error('Error during OCR:', err);
+                    displayText('Error extracting text. Please try again.');
+                });
+            };
+            img.onerror = function () {
+                displayText("Error loading converted image.");
+            };
+
+            img.src = URL.createObjectURL(convertedBlob);
+        }).catch((error) => {
+            console.error('Error converting HEIC:', error);
+            displayText('Error converting HEIC file. Please try again.');
+        });
+    };
+    reader.readAsArrayBuffer(file);
 }
 
 function extractTextFromPDF(file) {
@@ -113,21 +155,6 @@ function extractTextFromImage(file) {
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
-}
-
-function extractTextFromHVEC(file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        // Placeholder for the actual OCR or file processing for .hvec files
-        processHVECFile(e.target.result); // Call a function to handle .hvec files
-    };
-    reader.readAsArrayBuffer(file);
-}
-
-function processHVECFile(data) {
-    // Example: Integrate an OCR method or processing logic for .hvec files
-    // Replace this with actual OCR or parsing functionality for .hvec files
-    displayText('OCR for .hvec files not implemented.'); // Placeholder message
 }
 
 function displayText(text) {
