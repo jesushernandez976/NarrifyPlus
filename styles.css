@@ -25,19 +25,6 @@ body {
 
   }
 
-  video {
-    display: flex;
-    top: 0;
-    height: 250px;
-    width: auto;
-    mix-blend-mode: darken;
-    transition: transform 0.3s ease; /* Move the transition here to apply to both normal and hover states */
-  }
-  
-  video:hover {
-    transform: scale(1.13); /* Example: Scale the video by 10% when hovered */
-  }
-
   .buttons {
     margin: 5px;
     display: flex;
@@ -202,8 +189,17 @@ body {
       border-radius: 10px; /* Optional: Adds rounded corners */
       border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Adds a subtle border */
   }
-  
 
+  img {
+    width: auto;
+    height: 50vh;
+    padding: 0px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+  }
+  
 
 
 
@@ -276,5 +272,12 @@ body {
       .alert {
         width: 80%;
         font-size: 10px;
+      }
+
+      img {
+        width: 75%;
+        height: 25vh;
+        padding: 0px;
+        margin-bottom: 20px;
       }
 }
