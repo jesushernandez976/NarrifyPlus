@@ -35,8 +35,8 @@ function handleFileUpload(event) {
         if (file.type === 'application/pdf') {
             extractTextFromPDF(file);
         } else if (file.type.startsWith('image/')) {
-            if (file.name.endsWith('.heic') || file.type === 'image/heic') {
-                convertHEICToImage(file);
+            if (file.name.endsWith('.heic') || file.name.endsWith('.heif') || file.type === 'image/heic' || file.type === 'image/heif') {
+                convertHEICHEIFToImage(file);
             } else {
                 extractTextFromImage(file);
             }
@@ -116,12 +116,12 @@ function extractTextFromImage(file) {
     reader.readAsDataURL(file);
 }
 
-function convertHEICToImage(file) {
+function convertHEICHEIFToImage(file) {
     const reader = new FileReader();
     reader.onload = function (e) {
         const heicData = e.target.result;
 
-        // Convert the .HEIC file to a .JPG using heic2any
+        // Convert the .HEIC or .HEIF file to a .JPG using heic2any
         heic2any({
             blob: new Blob([heicData], { type: 'image/heic' }),
             toType: 'image/jpeg',  // or 'image/png'
@@ -151,8 +151,8 @@ function convertHEICToImage(file) {
 
             img.src = URL.createObjectURL(convertedBlob);  // Create URL for the converted image
         }).catch((error) => {
-            console.error('Error converting HEIC:', error);
-            displayText('Error converting HEIC file. Please try again.');
+            console.error('Error converting HEIC/HEIF:', error);
+            displayText('Error converting HEIC/HEIF file. Please try again.');
         });
     };
     reader.readAsArrayBuffer(file);
