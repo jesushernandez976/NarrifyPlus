@@ -13,6 +13,33 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
 
 </head>
 <body>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">FAQs</h1></div>
+      <div class="modal-body">
+        <em>How do I upload files?</em> To upload files you will need to make sure they are the following: PDF, JPG, JPEG, and PNG files. Continue to select the "Choose File"option
+        to upload you files. 
+      <br>
+      <br>
+      <em>How can I save my files?</em> Narrify will not save any files, they will be kept temporary to avoid storing information that 
+      can be issued in a copyright notice.
+      <br>
+      <br>
+      <em>What do to if my text will not extract? </em> Please ensure that you have the correct file format, clear image and clear text. 
+      </div>
+      <br>
+      <br> 
+      <em></em>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     
 <div class="container" >
     <video autoplay muted loop playsinline>
@@ -59,11 +86,11 @@ integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEw
   <div id="progress"></div>
   <div class="container">
     <footer class="py-1 my-4">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <ul class="nav justify-content-center border-bottom pb-4 mb-2">
         <li class="nav-item"><a href="#" class="nav-link px-1 text-body-secondary">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-1 text-body-secondary">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-1 text-body-secondary">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-1 text-body-secondary">About</a></li>
+        <li type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="nav-item"><a href="#" class="nav-link px-1 text-body-secondary">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-1 text-body-secondary">Features</a></li>
       </ul>
       <p class="text-center text-body-secondary tag">Access Code Programming, LLC [Version 1.0.3] <br >
         © 2025 [ACP] All Rights Reserved.</p>
