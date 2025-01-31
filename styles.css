@@ -195,6 +195,15 @@ body {
     cursor: default;      /* Changes cursor to default */
 }
 
+  .modal-content {
+      background: rgba(234, 234, 234, 0.7); /* Make it slightly transparent */
+      box-shadow: rgba(173, 207, 255, 0.7) 0 -12px 7px inset;
+      backdrop-filter: blur(10px); /* Apply the blur effect */
+      border-radius: 10px; /* Optional: Adds rounded corners */
+      border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Adds a subtle border */
+  }
+  
+
 
 
 
