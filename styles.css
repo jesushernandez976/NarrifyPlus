@@ -4,7 +4,7 @@ body {
     background-size: 200% 200%; /* Double the width of the background to enable movement */
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
-    color: black;
+    color: blue;
     position: static;
     
 }
@@ -233,7 +233,7 @@ body {
     top: 0px;
     bottom: 0px;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     z-index: -1; /* Moves particles behind everything */
     overflow: hidden;
   }
