@@ -1,6 +1,6 @@
 body {
     font-family: 'Electrolize', monospace;
-    background: linear-gradient(to right,rgb(191, 167, 201),rgb(20, 20, 85));
+    background: linear-gradient(to right,rgb(104, 146, 157),rgb(20, 20, 85));
     background-size: 200% 200%; /* Double the width of the background to enable movement */
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
@@ -201,11 +201,13 @@ body {
       box-shadow: rgba(173, 207, 255, 0.7) 0 -12px 7px inset;
       backdrop-filter: blur(10px); /* Apply the blur effect */
       border-radius: 10px; /* Optional: Adds rounded corners */
-      border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Adds a subtle border */
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color:black;
   }
 
   .modal {
     z-index: 1050; /* Bootstrap default */
+    color: black;
 }
 .modal-backdrop {
     z-index: 1040; /* Ensures backdrop is behind modal */
