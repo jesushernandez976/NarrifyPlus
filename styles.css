@@ -1,6 +1,6 @@
 body {
     font-family: 'Polymath', monospace;
-    background: linear-gradient(to right,rgb(91, 103, 182),rgb(0, 0, 85));
+    background: linear-gradient(to right,rgb(91, 103, 182),rgb(104, 68, 0));
     background-size: 200% 200%; /* Double the width of the background to enable movement */
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
