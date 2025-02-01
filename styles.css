@@ -1,6 +1,6 @@
 body {
-    font-family: 'Electrolize', monospace;
-    background: linear-gradient(to right,rgb(104, 146, 157),rgb(0, 0, 85));
+    font-family: 'Polymath', monospace;
+    background: linear-gradient(to right,rgb(91, 103, 182),rgb(0, 0, 85));
     background-size: 200% 200%; /* Double the width of the background to enable movement */
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
@@ -165,8 +165,12 @@ body {
 
   }
 
-  .coverLetter > h1 , p {
+  .coverLetter > h1 {
     font-weight: 900;
+    color: white;
+  }
+
+  .coverLetter > p {
     color: white;
   }
 
