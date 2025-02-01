@@ -1,12 +1,10 @@
 body {
     font-family: 'Polymath', monospace;
-    background: linear-gradient(to right,rgb(91, 103, 182),rgb(104, 68, 0));
+    background: linear-gradient(to right,rgb(91, 103, 182),rgb(113, 82, 23));
     background-size: 200% 200%; /* Double the width of the background to enable movement */
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
-    color: blue;
-    height: 100%;
-    
+    color: blue;  
 }
 
 @keyframes gradientMove {
@@ -24,10 +22,10 @@ body {
 .navBar {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   padding: 10px;
   margin-bottom: 15px;
-  align-items: space-between;
+  gap: 150px;
 
 }
 
@@ -36,9 +34,38 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   color: white;
-  font-size: 14px;
-  font-weight: 700; 
+  font-size: 18px;
+  font-weight: 700;
+  justify-content: space-around;  /* Adjusts spacing evenly */
+  align-items: center;
+}
 
+.menu1 {
+  background: rgba(234, 234, 234, 0.2);
+  box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.menu2 {
+  background: rgba(234, 234, 234, 0.2);
+  box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.menu3 {
+  background: rgba(234, 234, 234, 0.2);
+  box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.menu4 {
+  background: rgba(234, 234, 234, 0.2);
+  box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
+  border-radius: 30px;
+  padding: 5px;
 }
 
   .container {
@@ -333,6 +360,27 @@ body {
         height: 20vh;
         padding: 0px;
         margin-bottom: 20px;
+      }
+
+      .navBar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+        margin-bottom: 15px;
+        gap: 10px;
+      
+      }
+
+      .navLinks a {
+        text-decoration: none;
+        margin-left: 10px;
+        margin-right: 10px;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        justify-content: space-around;  /* Adjusts spacing evenly */
+        align-items: center;
       }
 
     
