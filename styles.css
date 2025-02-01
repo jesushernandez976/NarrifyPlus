@@ -5,6 +5,7 @@ body {
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
     color: white;
+    position: relative;
     
 }
 
