@@ -232,7 +232,8 @@ body {
     width: 200vh;
     height: 100vh;
     z-index: -1; /* Moves particles behind everything */
-}
+    overflow: hidden;
+  }
   @media screen and (max-width: 480px) {
     body {
         font-size: 14px; /* Reduce font size for smaller screens */
