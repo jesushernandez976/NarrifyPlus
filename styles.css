@@ -1,9 +1,11 @@
 body {
-    font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(to right,rgb(224, 228, 218),rgb(18, 78, 59));
-    background-size: 200% 100%; /* Double the width of the background to enable movement */
+    font-family: 'Electrolize', monospace;
+    background: linear-gradient(to right,rgb(191, 167, 201),rgb(20, 20, 85));
+    background-size: 200% 200%; /* Double the width of the background to enable movement */
     animation: gradientMove 5s linear infinite;
     font-weight: 400;
+    color: white;
+    
 }
 
 @keyframes gradientMove {
@@ -22,6 +24,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    z-index: 3;
+    color: black;
 
   }
 
@@ -57,17 +62,20 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  z-index:5;
   }
 
   #speak-btn:hover, #pause-btn:hover, #rest-btn:hover {
     background-color:rgb(255, 255, 255);
     box-shadow: #ADCFFF 0 -12px 7px inset;
     transform: scale(1.05);
+    z-index:5;
   }
   
   #speak-btn:active, #pause-btn:active, #rest-btn:active {
     transform: scale(1.025);
     background-color:rgb(255, 255, 255);
+    z-index:5;
   }
   
 
@@ -86,13 +94,13 @@ body {
 
   #file-input {
     margin: 10px;
-    z-index:2;
+    z-index:5;
     padding: 7px;
     background: rgba(234, 234, 234, 0.2);
     box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
     border-radius: 30px;
     font-size: 14px;
-    color: #333;
+    color: black;
     width: 75%;
     transition: all .15s;
     user-select: none;
@@ -100,12 +108,14 @@ body {
     touch-action: manipulation;
     display: inline-block;
     cursor: pointer;
+
   }
 
   #file-input:hover,#voice-select:hover {
     background-color:rgb(255, 255, 255);
     box-shadow: #ADCFFF 0 -12px 7px inset;
     transform: scale(1.03);
+    z-index:5;
   }
 
 
@@ -119,20 +129,22 @@ body {
     border-radius: 30px;
     background: rgba(234, 234, 234, 0.2);
     box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
+    z-index:5;
   }
   #progress {
     margin: 10px;
     font-size: 14px;
+    z-index:5;
   }
   #voice-select {
     margin: 10px;
-    z-index:2;
+    z-index:5;
     padding: 7px;
     background: rgba(234, 234, 234, 0.2);
     box-shadow:rgb(173, 207, 255, 0.5) 0 -12px 7px inset;
     border-radius: 30px;
     font-size: 14px;
-    color: #333;
+    color: black;
     width: 75%;
     transition: all .15s;
     user-select: none;
@@ -147,12 +159,14 @@ body {
     display: inline-block;
     padding: 2px 30px;
     margin-bottom: 10px;
-    width: 85%;
+    width: 90%;
+    justify-content: center;
 
   }
 
-  .coverLetter > h1 {
+  .coverLetter > h1 , p {
     font-weight: 900;
+    color: white;
   }
 
   .stop {
@@ -190,6 +204,13 @@ body {
       border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Adds a subtle border */
   }
 
+  .modal {
+    z-index: 1050; /* Bootstrap default */
+}
+.modal-backdrop {
+    z-index: 1040; /* Ensures backdrop is behind modal */
+}
+
   img {
     width: auto;
     height: 50vh;
@@ -199,10 +220,15 @@ body {
     justify-content: center;
 
   }
-  
 
-
-
+  #particles-js {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    width: 200vh;
+    height: 100vh;
+    z-index: -1; /* Moves particles behind everything */
+}
   @media screen and (max-width: 480px) {
     body {
         font-size: 14px; /* Reduce font size for smaller screens */
@@ -280,4 +306,6 @@ body {
         padding: 0px;
         margin-bottom: 20px;
       }
+
+    
 }
